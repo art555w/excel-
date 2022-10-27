@@ -43,12 +43,11 @@ module.exports = {
    },
    devtool: isDev ? 'source-map' : false,
    devServer: {
-      compress: true,
       port: 9000,
       hot: isDev,
    },
    plugins: [
-      new CleanWebpackPlugin(),
+      new CleanWebpackPlugin({}),
       new HtmlWebpackPlugin({
          template: 'index.html',
       }),
