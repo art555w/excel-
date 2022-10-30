@@ -38,6 +38,36 @@ class Dom {
    off(eventName, callback) {
       return this.$el.removeEventListener(eventName, callback)
    }
+
+   closest(selector) {
+      return $(this.$el.closest(selector))
+   }
+
+   coords() {
+      return this.$el.getBoundingClientRect()
+   }
+
+   get data() {
+      return this.$el.dataset
+   }
+
+   addClass(className) {
+      return this.$el.classList.add(className)
+   }
+
+   removeClass(className) {
+      return this.$el.classList.remove(className)
+   }
+
+   findAll(selector) {
+      return this.$el.querySelectorAll(selector)
+   }
+
+   css(styles = {}) {
+      Object.keys(styles).forEach((key) => {
+         return (this.$el.style[key] = styles[key])
+      })
+   }
 }
 
 export function $(selector) {
