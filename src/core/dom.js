@@ -14,6 +14,14 @@ class Dom {
       return this.$el.oiterHtml.trim()
    }
 
+   text(text) {
+      if (typeof text === 'string') {
+         this.$el.textContent = text
+         return this
+      }
+      return this.$el.textContent
+   }
+
    clear() {
       return this.html('')
    }
@@ -51,12 +59,29 @@ class Dom {
       return this.$el.dataset
    }
 
+   id(parce) {
+      if (parce) {
+         const parced = this.id().split(':')
+         return {
+            col: +parced[1],
+            row: +parced[0],
+         }
+      }
+      return this.data.id
+   }
+
    addClass(className) {
-      return this.$el.classList.add(className)
+      this.$el.classList.add(className)
+      return this
    }
 
    removeClass(className) {
-      return this.$el.classList.remove(className)
+      this.$el.classList.remove(className)
+      return this
+   }
+
+   find(selector) {
+      return $(this.$el.querySelector(selector))
    }
 
    findAll(selector) {
@@ -67,6 +92,10 @@ class Dom {
       Object.keys(styles).forEach((key) => {
          return (this.$el.style[key] = styles[key])
       })
+   }
+   focus() {
+      this.$el.focus()
+      return this
    }
 }
 
