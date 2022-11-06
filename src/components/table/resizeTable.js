@@ -1,7 +1,6 @@
 import { $ } from '../../core/dom'
 
 export function resizeTable(event, $root) {
-   event.preventDefault()
    const type = event.target.dataset.resize
    const minWidth = 36
    const minHeight = 16
